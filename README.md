@@ -1,6 +1,6 @@
 ![](images/logo.png)
 
-# Ancient Metagenomics
+# Ancient Environmental Metagenomics
 
 ## Instructor
 
@@ -27,18 +27,18 @@ By completing this course, you will:
 
 ## Before the course
 
-| Time   | Activity                                                                                           | Link                                                                                                                                     |
+| Time   | Activity                                                                                           | Link                                                                                                            |
 |--------|----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| ~ 1 h  | Recorded talk: aMeta presented at the Microbiome Virtual International Forum (MVIF) 2024           | [Video](https://www.youtube.com/watch?v=nIWpmUWAapM&t=39s)                                                                               |
-| ~ 1 h  | Recorded talk: False-positives in ancient metagenomics, aMeta approach, SPAAMtish 2023             | [Video](https://www.youtube.com/watch?v=KUf0auYHjrc&t=405s)                                                                              |
-| ~ 2 h  | aMeta method article in Genome Biology 2023                                                        | [PDF](https://github.com/NikolayOskolkov/AncientMetagenomics/blob/main/articles/aMeta_GenomeBiology_2023.pdf)             |
-| ~ 1 h  | Useful reading: Fungal DNA in the gut of Tyrolean Iceman (Ötzi)                                    | [PDF](https://github.com/NikolayOskolkov/AncientMetagenomics/blob/main/articles/Oskolkov_BMC_Genomics_2025.pdf)            |
-| ~ 1 h  | Useful reading: Detecting microbial contaminamination in eukaryotic reference genomes              | [PDF](https://github.com/NikolayOskolkov/AncientMetagenomics/blob/main/articles/Oskolkov_GigaScience_2025.pdf)                                                                      |
+| ~ 1 h  | Recorded talk: aMeta presented at the Microbiome Virtual International Forum (MVIF) 2024           | [Video](https://www.youtube.com/watch?v=nIWpmUWAapM&t=39s)                                                                                          |
+| ~ 1 h  | Recorded talk: False-positives in ancient metagenomics, aMeta approach, SPAAMtish 2023             | [Video](https://www.youtube.com/watch?v=KUf0auYHjrc&t=405s)                                                                                         |
+| ~ 2 h  | aMeta method article in Genome Biology 2023                                                        | [PDF](https://github.com/NikolayOskolkov/AncientMetagenomics/blob/main/articles/aMeta_GenomeBiology_2023.pdf)                                                                                 |
+| ~ 1 h  | Useful reading: Fungal DNA in the gut of Tyrolean Iceman (Ötzi)                                    | [PDF](https://github.com/NikolayOskolkov/AncientMetagenomics/blob/main/articles/Oskolkov_BMC_Genomics_2025.pdf)                                                                               |
+| ~ 1 h  | Useful reading: Detecting microbial contaminamination in eukaryotic reference genomes              | [PDF](https://github.com/NikolayOskolkov/AncientMetagenomics/blob/main/articles/Oskolkov_GigaScience_2025.pdf)                                                                                |
 | ~ 1 h  | Useful reading: Refining filtering criteria for taxonomic profiling of ancient metagenomics data   | [PDF](https://github.com/NikolayOskolkov/AncientMetagenomics/blob/main/articles/Oskolkov_FrontiersMicrobiology_2026.pdf)                                                                      |
-| ~ 1 h  | In case needed: Recap on Unix                                                                      | [Lab](command-line-basics.md)                                                                                                            |
+| ~ 1 h  | In case needed: Recap on Unix                                                                      | [Lab](command-line-basics.md)                                                                                                    |
 
 
-## Day 1: 2 pm - 8 pm Berlin time
+## Day 1: 3 pm - 9 pm Swedish time
 
 | Time           | Activity                                                                                   | Link                                                                                                                                     |
 |----------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
@@ -54,7 +54,7 @@ By completing this course, you will:
 | 19.00 - 20.00  | Practical: taxonomic profiling in microbial and environmental ancient metagenomics         | [Lab](exercises.md#read-based-taxonomic-profiling)                                                                                       |
 
 
-## Day 2: 2 pm - 8 pm Berlin time
+## Day 2: 3 pm - 9 pm Swedish time
 
 | Time           | Activity                                                                                   | Link                                                                                                                                     |
 |----------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
@@ -67,7 +67,7 @@ By completing this course, you will:
 | 18.15 - 20.00  | Practical: microbial contamination correction and source tracking                          | [Lab](exercises.md#microbiome-contamination-correction)                                                                                  |
 
 
-## Day 3: 2 pm - 8 pm Berlin time
+## Day 3: 3 pm - 9 pm Swedish time
 
 | Time           | Activity                                                                                   | Link                                                                                                                                     |
 |----------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
