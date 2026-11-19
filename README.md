@@ -4,10 +4,10 @@
 
 ## Instructor
 
-- Dr. Nikolay Oskolkov, Metabolic Research Group leader (PI), National Institute of Research and Innovation (NIRI), Riga, Latvia, and Biology Department, Lund University Sweden
+- Dr. Nikolay Oskolkov, Metabolic Research Group leader (PI), National Institute of Research and Innovation (NIRI), Riga, Latvia, and Biology Department, Lund University, Sweden
 
 ## Course overview
-The study of ancient microbial, animal, and plant DNA from archaeological samples is a rapidly expanding field with significant potential for uncovering insights into past environments, lifestyles, and diseases. However, the limited quantity and degraded quality of ancient DNA pose significant challenges to computational analysis. In this course, we will explore the key challenges and analytical methods in ancient metagenomics, focusing on a comprehensive understanding and practical implementation of the ancient metagenomic workflow, aMeta.
+The study of ancient microbial, animal, and plant DNA from environmental samples—such as sediments, ice, and permafrost—is a rapidly expanding field with significant potential for uncovering insights into past ecosystems, biodiversity, and environmental change. However, the limited quantity and degraded quality of ancient DNA, together with the complex mixture of organisms present in environmental samples, pose significant challenges to computational analysis. In this course, we will explore the key challenges and analytical methods in ancient environmental metagenomics, focusing on a comprehensive understanding and practical implementation of two complementary workflows: aMeta, for ancient metagenomic analysis, and aeMeta, a newly developed workflow tailored specifically to ancient environmental metagenomics. In addition, we will introduce GENEX, a reference genome decontamination tool designed to remove contamination from reference genomes and thereby improve the accuracy and reliability of downstream analyses.
 
 ## Target audience and assumed background
 We assume some basic awareness of UNIX environment, as well as at least beginner level of R and / or Python programming.
@@ -16,9 +16,9 @@ We assume some basic awareness of UNIX environment, as well as at least beginner
 By completing this course, you will:
 
 - Understand the basics of ancient microbial and environmental metagenomic analysis
-- Have an overview of bioinformatic tools and best practices for ancient metagenomic analysis
-- Be able to apply aMeta workflow to your ancient metagenomic samples
-- Know key challenges, approaches and solutions in the ancient metagenomics research field
+- Have an overview of bioinformatic tools and best practices for ancient environmental metagenomic analysis
+- Be able to apply aMeta, aeMeta and GENEX workflows to your ancient environmental metagenomic samples
+- Know key challenges, approaches and solutions in the ancient environmental metagenomics research field
 - Be able to choose the right tools and approaches to answer your specific research question 
 
 ---
@@ -31,7 +31,7 @@ By completing this course, you will:
 |--------|----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | ~ 1 h  | Recorded talk: aMeta presented at the Microbiome Virtual International Forum (MVIF) 2024           | [Video](https://www.youtube.com/watch?v=nIWpmUWAapM&t=39s)                                                                                          |
 | ~ 1 h  | Recorded talk: False-positives in ancient metagenomics, aMeta approach, SPAAMtish 2023             | [Video](https://www.youtube.com/watch?v=KUf0auYHjrc&t=405s)                                                                                         |
-| ~ 2 h  | aMeta method article in Genome Biology 2023                                                        | [PDF](https://github.com/NikolayOskolkov/AncientMetagenomics/blob/main/articles/aMeta_GenomeBiology_2023.pdf)                                                                                 |
+| ~ 2 h  | aMeta ancient microbial metagenomic method article in Genome Biology 2023                                                        | [PDF](https://github.com/NikolayOskolkov/AncientMetagenomics/blob/main/articles/aMeta_GenomeBiology_2023.pdf)                                                                                 |
 | ~ 1 h  | Useful reading: Fungal DNA in the gut of Tyrolean Iceman (Ötzi)                                    | [PDF](https://github.com/NikolayOskolkov/AncientMetagenomics/blob/main/articles/Oskolkov_BMC_Genomics_2025.pdf)                                                                               |
 | ~ 1 h  | Useful reading: Detecting microbial contaminamination in eukaryotic reference genomes              | [PDF](https://github.com/NikolayOskolkov/AncientMetagenomics/blob/main/articles/Oskolkov_GigaScience_2025.pdf)                                                                                |
 | ~ 1 h  | Useful reading: Refining filtering criteria for taxonomic profiling of ancient metagenomics data   | [PDF](https://github.com/NikolayOskolkov/AncientMetagenomics/blob/main/articles/Oskolkov_FrontiersMicrobiology_2026.pdf)                                                                      |
