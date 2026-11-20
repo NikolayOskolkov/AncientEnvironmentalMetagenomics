@@ -1,6 +1,6 @@
 # Exercises
 
-1. [Setting up the cloud computing](#setting-up-the-cloud-computing)
+1. [Setting up the Google Colab computing](#setting-up-the-google-colab-computing)
 2. [Getting the raw data](#getting-the-raw-data)
 3. [QC and trimming](#qc-and-trimming)
    1. [QC of the raw data](#qc-of-the-raw-data)
@@ -22,32 +22,34 @@
    2. [Abundance quantification of assembled contigs](#abundance-quantification-of-assembled-contigs)
    3. [Taxonomic annotation of assembled contigs](#taxonomic-annotation-of-assembled-contigs)
 
-## Setting up the cloud computing
+## Setting up the Google Colab computing
 
-We will use the [Amazon Cloud](https://aws.amazon.com/ec2/) (AWS EC2) services for most of the analyses. The IP address of the remote machine will change every day, so a new IP adress will be posted in Slack each morning. Your username - that you have received by e-mail/Slack - will be the same for the whole course. We will use `ssh` to connect to the remote machine.
+We will use the [Google Colab](https://colab.research.google.com/) services for most of the analyses. Please begin with `New Notebook` and then mounting your Google Drive to the Google Colab by:
 
-```bash
-ssh -i ameta25.pem -XY ubuntu@54.202.26.255
+```python
+from google.colab import drive
+drive.mount('/content/drive')
 ```
 
-Once you have connected to the remote machine, you will be in your home folder (`/users/userXX`, also represented by `~` or `$HOME`).
+Next, please provide your Google Account credentials and approve the connection to your Google Drive. Please proceed with clicking `Terminal` in your bottom left corner. You can now type regular bash command lines in the terminal window on the right, and combine the operations with files with the Python and R codes in the Google Colab notebook window on the left..
+
 **Remember:** You can check where you are with the command `pwd`. To have access to the course's content, let's copy the GitHub repository to your `home` folder using `git clone`:
 
 **Do this on the first day:** 
 
 ```bash
-cd ~
-git clone https://github.com/NikolayOskolkov/AncientMetagenomics
+cd /content/drive/MyDrive
+git clone https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics
 ```
 
 **Do this every once in a while, at least each day before starting the activities:**
 
 ```bash
-cd ~/AncientMetagenomics
+cd ~/AncientEnvironmentalMetagenomics
 git pull
 ```
 
-**Note:** All exercises will be executed inside the `AncientMetagenomics` folder that you cloned inside your own `home` folder. So remember to `cd ~/AncientMetagenomics` every time you connect to the remote machine.
+**Note:** All exercises will be executed inside the `AncientEnvironmentalMetagenomics` folder that you cloned inside your own `home` folder. So remember to `cd ~/AncientEnvironmentalMetagenomics` every time you connect to the remote machine.
 
 ## Getting the raw data
 
@@ -67,7 +69,7 @@ Copy the raw sequencing data to your own `01_DATA` folder. Also copy the file `S
 
 ```bash
 
-cd ~/AncientMetagenomics
+cd ~/AncientEnvironmentalMetagenomics
 mkdir 01_DATA
 
 cp ~/Share/data/*.fastq.gz 01_DATA/
@@ -97,10 +99,10 @@ Now that you have copied the raw data to your working directory, let's do some q
 
 ### QC of the raw data
 
-Go to your `AncientMetagenomics` folder, create a folder for the QC files, and activate the `conda` environment:
+Go to your `AncientEnvironmentalMetagenomics` folder, create a folder for the QC files, and activate the `conda` environment:
 
 ```bash
-cd ~/AncientMetagenomics
+cd ~/AncientEnvironmentalMetagenomics
 mkdir 02_QC_RAW
 conda activate aMeta
 ```
@@ -121,7 +123,7 @@ After the QC is finished, copy the `MultiQC` report (`02_QC_RAW/multiqc_report.h
 Below we provide an example (please note that the IP address should be changed) of copying files to you local computer via `scp` command-line tool:
 
 ```bash
-scp -r -i ameta25.pem ubuntu@54.244.63.96:/home/ubuntu/AncientMetagenomics/02_QC_RAW/* .
+scp -r -i ameta25.pem ubuntu@54.244.63.96:/home/ubuntu/AncientEnvironmentalMetagenomics/02_QC_RAW/* .
 ```
 
 ### Read trimming
@@ -129,7 +131,7 @@ scp -r -i ameta25.pem ubuntu@54.244.63.96:/home/ubuntu/AncientMetagenomics/02_QC
 Our QC reports tell us that a significant percentage of the raw sequences contain some isses such as the presence of adapters. Before proceeding, it is necessary to clean up/trim the raw sequences. Before start trimming the data, let's create a folder for the processed data and activate the `conda` environment:
 
 ```bash
-cd ~/AncientMetagenomics
+cd ~/AncientEnvironmentalMetagenomics
 mkdir 03_TRIMMED
 conda activate aMeta
 ```
@@ -162,7 +164,7 @@ Often ancient metagenomics data are paired-end (PE), therefore a good practice i
 wget https://diabimmune.broadinstitute.org/diabimmune/data/16/G65860_pe_1.fastq.gz
 wget https://diabimmune.broadinstitute.org/diabimmune/data/16/G65860_pe_2.fastq.gz 
 
-conda activate ancientmetagenomics
+conda activate AncientEnvironmentalMetagenomics
 
 fastp --in1 G65860_pe_1.fastq.gz --in2 G65860_pe_2.fastq.gz -p -c \
 --merge --merged_out=G65860.trimmed_merged.fastq.gz \
@@ -202,7 +204,7 @@ If you work with host-associated microbiome, i.e. human microbiome, this is a ma
 # wget http://hgdownload.soe.ucsc.edu/goldenpath/hg38/bigZips/hg38.fa.gz
 # bowtie2-build --large-index hg38.fa.gz hg38.fa.gz --threads 20
 
-cd ~/AncientMetagenomics
+cd ~/AncientEnvironmentalMetagenomics
 mkdir 04_HOST_REMOVAL
 conda activate aMeta
 
@@ -231,7 +233,7 @@ There are many different tools and approaches for obtaining taxonomic profiles f
 First let's create a folder to store the results:
 
 ```bash
-cd ~/AncientMetagenomics
+cd ~/AncientEnvironmentalMetagenomics
 mkdir 05_TAXONOMIC_PROFILE
 conda activate aMeta
 ```
@@ -321,7 +323,7 @@ That database maps k-mers to the lowest common ancestor (LCA) of all genomes kno
 # tar -xzvf minikraken2_v2_8GB_201904.tgz
 
 conda deactivate
-conda activate ancientmetagenomics
+conda activate AncientEnvironmentalMetagenomics
 
 for sample in $(cat SAMPLES.txt); do
   kraken2 --db ~/Share/Databases/minikraken2_v2_8GB_201904_UPDATE \
@@ -344,7 +346,7 @@ There are many different appraoches for taxonomic profiling of metagenomes, each
 # wget https://farm.cse.ucdavis.edu/~ctbrown/sourmash-db/gtdb-rs207/gtdb-rs207.genomic-reps.dna.k31.zip
 # wget https://farm.cse.ucdavis.edu/~ctbrown/sourmash-db/gtdb-rs207/gtdb-rs207.taxonomy.with-strain.csv.gz
 
-conda activate ancientmetagenomics
+conda activate AncientEnvironmentalMetagenomics
 
 for sample in $(cat SAMPLES.txt); do
   sourmash sketch dna 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz \
@@ -460,11 +462,11 @@ In the Taxonomic Profiling section we saw how the output of KrakenUniq was filte
 Now, after we have detected an interesting *Y. pestis* hit, we would like to follow it up, and compute multiple quality metrics (including proper breadth and evenness of coverage) from alignments (Bowtie2 aligner willl be used in our case) of the DNA reads to the *Y. pestis* reference genome. Below, we download *Yersinia pestis* reference genome from NCBI, build its Bowtie2 index, and align trimmed reads against *Yersinia pestis* reference genome with Bowtie2. Do not forget to sort and index the alignments as it will be important for computing the evenness of coverage. It is also recommended to remove multi-mapping reads, i.e. the ones that have MAPQ = 0, at least for Bowtie and BWA aligners that are commonly used in ancient metagenomics. Samtools with *-q* flag can be used to extract reads with MAPQ > = 1.
 
 ```bash
-cd ~/AncientMetagenomics
+cd ~/AncientEnvironmentalMetagenomics
 mkdir 07_AUTHENTICATION
 cd 07_AUTHENTICATION
 
-conda activate ancientmetagenomics
+conda activate AncientEnvironmentalMetagenomics
 
 NCBI=https://ftp.ncbi.nlm.nih.gov; ID=GCF_000222975.1_ASM22297v1
 wget $NCBI/genomes/all/GCF/000/222/975/${ID}/${ID}_genomic.fna.gz
@@ -607,7 +609,7 @@ git clone https://github.com/pontussk/PMDtools
 conda deactivate
 conda activate py27
 
-samtools view -h Y.pestis_sample10.bam | python2 ~/AncientMetagenomics/PMDtools/pmdtools.0.60.py \
+samtools view -h Y.pestis_sample10.bam | python2 ~/AncientEnvironmentalMetagenomics/PMDtools/pmdtools.0.60.py \
  --printDS > PMDscores.txt
 ```
 
@@ -664,10 +666,10 @@ If negative control samples (balnks) are available, contaminating organisms can 
 ```R
 # NOTE: the R codes below should be run on your local computer.
 # The input files are available in the "practicals"-folder after cloning
-# https://github.com/NikolayOskolkov/AncientMetagenomics
+# https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics
 # First, please, navigate to the "practicals"-folder as
 
-setwd("/your_computer/AncientMetagenomics/practicals")
+setwd("/your_computer/AncientEnvironmentalMetagenomics/practicals")
 
 # then you can run the codes below using Rstudio
 
@@ -722,10 +724,10 @@ If one wants to assess the degree of contamination for each sample, there is a h
 ```R
 # NOTE: the R codes below should be run on your local computer.
 # The input files are available in the "practicals"-folder after cloning
-# https://github.com/NikolayOskolkov/AncientMetagenomics
+# https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics
 # First, please, navigate to the "practicals"-folder as
 
-setwd("/your_computer/AncientMetagenomics/practicals")
+setwd("/your_computer/AncientEnvironmentalMetagenomics/practicals")
 
 # Please make sure to have the three R packages below installed:
 library("cuperdec"); library("magrittr"); library("dplyr")
@@ -764,10 +766,10 @@ Originally, SourceTracker was developed for 16S data, i.e. using only 16S riboso
 ```R
 # NOTE: the R codes below should be run on your local computer.
 # The input files are available in the "practicals"-folder after cloning
-# https://github.com/NikolayOskolkov/AncientMetagenomics
+# https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics
 # First, please, navigate to the "practicals"-folder as
 
-setwd("/your_computer/AncientMetagenomics/practicals")
+setwd("/your_computer/AncientEnvironmentalMetagenomics/practicals")
 
 # then you can run the codes below using Rstudio
 
@@ -853,7 +855,7 @@ tar -xf decOM_sources.tar.gz
 
 # Run decOM predictions
 decOM -p_sources decOM_sources/ -p_sinks FASTQ_NAMES_LIST.txt \
--p_keys ~/AncientMetagenomics/03_TRIMMED -mem 15GB -t 4
+-p_keys ~/AncientEnvironmentalMetagenomics/03_TRIMMED -mem 15GB -t 4
 ```
 
 In the command line above, he *-p_sinks* parameter provides a list of sink samples, for example *SRR13355807*.
@@ -862,10 +864,10 @@ The sink fastq-files are placed in *decOM/FASTQ* together with *keys* fof-files 
 ```R
 # NOTE: the R codes below should be run on your local computer.
 # The input files are available in the "practicals"-folder after cloning
-# https://github.com/NikolayOskolkov/AncientMetagenomics
+# https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics
 # First, please, navigate to the "practicals"-folder as
 
-setwd("/your_computer/AncientMetagenomics/practicals")
+setwd("/your_computer/AncientEnvironmentalMetagenomics/practicals")
 
 # then you can run the codes below using Rstudio
 
@@ -1179,9 +1181,9 @@ __What options do we need?__
 We have only given the output directory in the script below; modify it as necessary and run `megahit`:
 
 ```bash 
-cd ~/AncientMetagenomics
+cd ~/AncientEnvironmentalMetagenomics
 
-conda activate ancientmetagenomics
+conda activate AncientEnvironmentalMetagenomics
 
 megahit -r 04_HOST_REMOVAL/sample10_unaligned_to_hg38.fastq.gz --out-dir 08_ASSEMBLY --min-contig-len 100 -t 4
 
@@ -1194,7 +1196,7 @@ Now we are going to explore the assembled contigs. First, we will run QC for the
 ```bash
 mkdir 09_ASSEMBLY_QC
 
-conda activate ancientmetagenomics
+conda activate AncientEnvironmentalMetagenomics
 
 # check assembly quality statistics with callN50 JavaScript script 
 # that requires the k8 JavaScript shell (or node) to be installed
@@ -1256,7 +1258,7 @@ Can you name a few most abundant contigs?
 Now, we will figure out what organisms with available taxonomic annotation correspond to the assembled contigs. We will use Kraken2 for assigning taxa to assembled contigs:
 
 ```bash
-conda activate ancientmetagenomics
+conda activate AncientEnvironmentalMetagenomics
 
 kraken2 --db ~/Share/Databases/minikraken2_v2_8GB_201904_UPDATE --threads 4 \
 --output 09_ASSEMBLY_QC/sequences.kraken_contigs --use-names \
