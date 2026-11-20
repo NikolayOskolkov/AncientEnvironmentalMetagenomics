@@ -48,13 +48,24 @@ By completing this course, you will:
 | 15.45 - 16.30  | Quality control, adapter and host removal                                                  | [Slides](https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/slides/Lecture_QC_AdapterRemoval.pdf)                                                                                |
 | 16.30 - 16.45  | Break                                                                                      |                                                                                                                     |
 | 16.45 - 17.30  | Practical: quality control, adapter and host removal                                       | [Lab](exercises.md#getting-the-raw-data)                                                                                                         |
+
+
+
+## Day 2: 3 pm - 9 pm Swedish time
+
+| Time           | Activity                                                                                   | Link                                                                                                            |
+|----------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| 15.45 - 16.30  | Quality control, adapter and host removal                                                  | [Slides](https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/slides/Lecture_QC_AdapterRemoval.pdf)                                                                                |
+| 16.30 - 16.45  | Break                                                                                      |                                                                                                                     |
+| 16.45 - 17.30  | Practical: quality control, adapter and host removal                                       | [Lab](exercises.md#getting-the-raw-data)                                                                                                         |
 | 17.30 - 17.45  | Break                                                                                      |                                                                                                                                          |
 | 17.45 - 18.45  | Taxonomic profiling and filtering criteria                                                 | [Slides](https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/slides/Lecture_TaxonomicProfiling.pdf)          |
 | 18.45 - 19.00  | Break                                                                                      |                                                                                                                                          |
 | 19.00 - 20.00  | Practical: taxonomic profiling in microbial and environmental ancient metagenomics         | [Lab](exercises.md#read-based-taxonomic-profiling)                                                                                                    |
 
 
-## Day 2: 3 pm - 9 pm Swedish time
+
+## Day 3: 3 pm - 9 pm Swedish time
 
 | Time           | Activity                                                                                   | Link                                                                                                                                     |
 |----------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
@@ -67,11 +78,22 @@ By completing this course, you will:
 | 18.15 - 20.00  | Practical: microbial contamination correction and source tracking                          | [Lab](exercises.md#microbiome-contamination-correction)                                                                                  |
 
 
-## Day 3: 3 pm - 9 pm Swedish time
+
+## Day 4: 3 pm - 9 pm Swedish time
 
 | Time           | Activity                                                                                   | Link                                                                                                                                     |
 |----------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 14.00 - 14.15  | Bonus lecture: UMAP vs. PCA for population genomics and ancient metagenomics               | [Slides](https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/slides/UMAP_NBIS_AI_IO_2025_Oskolkov.pdf)       |
+| 17.00 - 18.00  | Decontamination analysis of metegenomic data and eukaryotic reference genomes              | [Slides](https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/slides/Lecture_Decontamination.pdf)             |
+| 18.00 - 18.15  | Break                                                                                      |                                                                                                                                        |
+| 18.15 - 20.00  | Practical: microbial contamination correction and source tracking                          | [Lab](exercises.md#microbiome-contamination-correction)                                                                                  |
+
+
+
+## Day 5: 3 pm - 9 pm Swedish time
+
+| Time           | Activity                                                                                   | Link                                                                                                                                     |
+|----------------|--------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 14.15 - 15.00  | aMeta: an accurate and memory-efficient ancient metagenomic profiling workflow             | [Slides](https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/slides/Lecture_aMeta.pdf)                       |
 | 15.00 - 15.15  | Break                                                                                      |                                                                                                                                          |
 | 15.15 - 16.45  | Practical: aMeta ancient metagenomic workflow                                              | [Lab](exercises.md#ameta-introduction-and-installation)                                                                                  |
