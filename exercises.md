@@ -45,11 +45,11 @@ git clone https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics
 **Do this every once in a while, at least each day before starting the activities:**
 
 ```bash
-cd ~/AncientEnvironmentalMetagenomics
+cd /content/drive/MyDrive/AncientEnvironmentalMetagenomics
 git pull
 ```
 
-**Note:** All exercises will be executed inside the `AncientEnvironmentalMetagenomics` folder that you cloned inside your own `home` folder. So remember to `cd ~/AncientEnvironmentalMetagenomics` every time you connect to the remote machine.
+**Note:** All exercises will be executed inside the `AncientEnvironmentalMetagenomics` folder that you cloned inside your own `home` folder. So remember to `cd /content/drive/MyDrive/AncientEnvironmentalMetagenomics` every time you connect to the remote machine.
 
 ## Getting the raw data
 
@@ -69,11 +69,11 @@ Copy the raw sequencing data to your own `01_DATA` folder. Also copy the file `S
 
 ```bash
 
-cd ~/AncientEnvironmentalMetagenomics
+cd /content/drive/MyDrive/AncientEnvironmentalMetagenomics
 mkdir 01_DATA
 
-cp ~/Share/data/*.fastq.gz 01_DATA/
-cp ~/Share/data/SAMPLES.txt ./
+cp /content/drive/MyDrive/Share/data/*.fastq.gz 01_DATA/
+cp /content/drive/MyDrive/Share/data/SAMPLES.txt ./
 ```
 
 Let us now explore the data a little bit. First of all, we can look inside the gzipped-file without unzipping with `zcat`:
@@ -102,7 +102,7 @@ Now that you have copied the raw data to your working directory, let's do some q
 Go to your `AncientEnvironmentalMetagenomics` folder, create a folder for the QC files, and activate the `conda` environment:
 
 ```bash
-cd ~/AncientEnvironmentalMetagenomics
+cd /content/drive/MyDrive/AncientEnvironmentalMetagenomics
 mkdir 02_QC_RAW
 conda activate aMeta
 ```
@@ -131,7 +131,7 @@ scp -r -i ameta25.pem ubuntu@54.244.63.96:/home/ubuntu/AncientEnvironmentalMetag
 Our QC reports tell us that a significant percentage of the raw sequences contain some isses such as the presence of adapters. Before proceeding, it is necessary to clean up/trim the raw sequences. Before start trimming the data, let's create a folder for the processed data and activate the `conda` environment:
 
 ```bash
-cd ~/AncientEnvironmentalMetagenomics
+cd /content/drive/MyDrive/AncientEnvironmentalMetagenomics
 mkdir 03_TRIMMED
 conda activate aMeta
 ```
@@ -204,12 +204,12 @@ If you work with host-associated microbiome, i.e. human microbiome, this is a ma
 # wget http://hgdownload.soe.ucsc.edu/goldenpath/hg38/bigZips/hg38.fa.gz
 # bowtie2-build --large-index hg38.fa.gz hg38.fa.gz --threads 20
 
-cd ~/AncientEnvironmentalMetagenomics
+cd /content/drive/MyDrive/AncientEnvironmentalMetagenomics
 mkdir 04_HOST_REMOVAL
 conda activate aMeta
 
 for sample in $(cat SAMPLES.txt); do
-	bowtie2 -x ~/Share/Databases/hg38/hg38.fa.gz --end-to-end --threads 4 --very-sensitive \
+	bowtie2 -x /content/drive/MyDrive/Share/Databases/hg38/hg38.fa.gz --end-to-end --threads 4 --very-sensitive \
 	03_TRIMMED/${sample}.trimmed.fastq.gz | samtools view -bS -h -@ 4 - \
 	> 04_HOST_REMOVAL/${sample}_aligned_to_hg38.bam
 	
@@ -233,7 +233,7 @@ There are many different tools and approaches for obtaining taxonomic profiles f
 First let's create a folder to store the results:
 
 ```bash
-cd ~/AncientEnvironmentalMetagenomics
+cd /content/drive/MyDrive/AncientEnvironmentalMetagenomics
 mkdir 05_TAXONOMIC_PROFILE
 conda activate aMeta
 ```
@@ -254,7 +254,7 @@ Then, taxonomic k-mer-based classification of the ancient metagenomic reads can 
 
 ```bash
 for sample in $(cat SAMPLES.txt); do
-krakenuniq --db ~/Share/Databases/KrakenUniq_DB \
+krakenuniq --db /content/drive/MyDrive/Share/Databases/KrakenUniq_DB \
 --fastq-input 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz \
 --threads 4 --classified-out 05_TAXONOMIC_PROFILE/${sample}.classified_sequences.krakenuniq \
 --unclassified-out 05_TAXONOMIC_PROFILE/${sample}.unclassified_sequences.krakenuniq \
@@ -273,7 +273,7 @@ We can filter the KrakenUniq output with respect to both depth (*taxReads*) and 
 cd 05_TAXONOMIC_PROFILE
 for i in $(ls *.krakenuniq.output)
 do
-~/Share/scripts/filter_krakenuniq.py $i 1000 200 ~/Share/scripts/pathogensfound.very_inclusive.tab
+/content/drive/MyDrive/Share/scripts/filter_krakenuniq.py $i 1000 200 /content/drive/MyDrive/Share/scripts/pathogensfound.very_inclusive.tab
 done
 cd ..
 ```
@@ -284,7 +284,7 @@ cd ..
 We can also easily produce a KrakenUniq taxonomic abundance table *krakenuniq_abundance_matrix.txt* using the custom R script below, which takes as argument the folder *KRAKENUNIQ* containing the KrakenUniq output files. From the *krakenuniq_abundance_matrix.txt* table, it becomes clear that *Yersinia pestis* seems to be present in a few other samples in addition to sample 10.
 
 ```bash
-Rscript ~/Share/scripts/krakenuniq_abundance_matrix.R 05_TAXONOMIC_PROFILE \
+Rscript /content/drive/MyDrive/Share/scripts/krakenuniq_abundance_matrix.R 05_TAXONOMIC_PROFILE \
 06_KRAKENUNIQ_ABUNDANCE_MATRIX 1000 200
 ```
 
@@ -326,7 +326,7 @@ conda deactivate
 conda activate AncientEnvironmentalMetagenomics
 
 for sample in $(cat SAMPLES.txt); do
-  kraken2 --db ~/Share/Databases/minikraken2_v2_8GB_201904_UPDATE \
+  kraken2 --db /content/drive/MyDrive/Share/Databases/minikraken2_v2_8GB_201904_UPDATE \
 	  --fastq-input 04_HOST_REMOVAL/${sample}_unaligned_to_hg38.fastq.gz \
 	  --output 05_TAXONOMIC_PROFILE/${sample}_sequences.kraken2 \
 	  --report 05_TAXONOMIC_PROFILE/${sample}_kraken2.output \
@@ -343,8 +343,8 @@ There are many different appraoches for taxonomic profiling of metagenomes, each
 
 ```bash
 # You will have to download the database:
-# wget https://farm.cse.ucdavis.edu/~ctbrown/sourmash-db/gtdb-rs207/gtdb-rs207.genomic-reps.dna.k31.zip
-# wget https://farm.cse.ucdavis.edu/~ctbrown/sourmash-db/gtdb-rs207/gtdb-rs207.taxonomy.with-strain.csv.gz
+# wget https://farm.cse.ucdavis.edu//content/drive/MyDrivectbrown/sourmash-db/gtdb-rs207/gtdb-rs207.genomic-reps.dna.k31.zip
+# wget https://farm.cse.ucdavis.edu//content/drive/MyDrivectbrown/sourmash-db/gtdb-rs207/gtdb-rs207.taxonomy.with-strain.csv.gz
 
 conda activate AncientEnvironmentalMetagenomics
 
@@ -355,21 +355,21 @@ for sample in $(cat SAMPLES.txt); do
                       --merge ${sample}
 
   sourmash gather 05_TAXONOMIC_PROFILE/${sample}.sig.zip \
-                  ~/Share/Databases/sourmash/gtdb-rs207.genomic-reps.dna.k31.zip \
+                  /content/drive/MyDrive/Share/Databases/sourmash/gtdb-rs207.genomic-reps.dna.k31.zip \
                   -k 31 --threshold-bp 10 \
                   -o 05_TAXONOMIC_PROFILE/${sample}.gather.csv
 done
 
 # Gather results per phylum and genus
 sourmash tax metagenome -g 05_TAXONOMIC_PROFILE/*.gather.csv \
-                        -t ~/Share/Databases/sourmash/gtdb-rs207.taxonomy.with-strain.csv.gz \
+                        -t /content/drive/MyDrive/Share/Databases/sourmash/gtdb-rs207.taxonomy.with-strain.csv.gz \
                         --output-dir 05_TAXONOMIC_PROFILE \
                         --output-base sourmash.phylum \
                         --output-format lineage_summary \
                         --rank phylum
 
 sourmash tax metagenome -g 05_TAXONOMIC_PROFILE/*.gather.csv \
-                        -t ~/Share/Databases/sourmash/gtdb-rs207.taxonomy.with-strain.csv.gz \
+                        -t /content/drive/MyDrive/Share/Databases/sourmash/gtdb-rs207.taxonomy.with-strain.csv.gz \
                         --output-dir 05_TAXONOMIC_PROFILE \
                         --output-base sourmash.genus \
                         --output-format lineage_summary \
@@ -462,7 +462,7 @@ In the Taxonomic Profiling section we saw how the output of KrakenUniq was filte
 Now, after we have detected an interesting *Y. pestis* hit, we would like to follow it up, and compute multiple quality metrics (including proper breadth and evenness of coverage) from alignments (Bowtie2 aligner willl be used in our case) of the DNA reads to the *Y. pestis* reference genome. Below, we download *Yersinia pestis* reference genome from NCBI, build its Bowtie2 index, and align trimmed reads against *Yersinia pestis* reference genome with Bowtie2. Do not forget to sort and index the alignments as it will be important for computing the evenness of coverage. It is also recommended to remove multi-mapping reads, i.e. the ones that have MAPQ = 0, at least for Bowtie and BWA aligners that are commonly used in ancient metagenomics. Samtools with *-q* flag can be used to extract reads with MAPQ > = 1.
 
 ```bash
-cd ~/AncientEnvironmentalMetagenomics
+cd /content/drive/MyDrive/AncientEnvironmentalMetagenomics
 mkdir 07_AUTHENTICATION
 cd 07_AUTHENTICATION
 
@@ -512,7 +512,7 @@ for(i in 1:length(tiles))
   dim(df_loc)[1]))
 }
 boc[is.na(boc)]<-0; df$boc <- boc
-plot(df$boc ~ df$Pos, type = "s", xlab = "Genome position", ylab = "Coverage")
+plot(df$boc /content/drive/MyDrive df$Pos, type = "s", xlab = "Genome position", ylab = "Coverage")
 abline(h = 0, col = "red", lty = 2)
 mtext(paste0(round((sum(df$N_reads > 0) / length(df$N_reads)) * 100, 2), 
 "% of genome covered"), cex = 0.8)
@@ -541,7 +541,7 @@ hist(as.numeric(readLines("mapq.txt")), col = “darkred”, breaks = 100)
 
 ![](images/MAPQ.png)
 
-Note that MAPQ scores are computed slightly differently for Bowtie and BWA, so they are not directly comparable, however, for both MAPQ ~ 10-30, as in the histograms below, indicates good affinity of the DNA reads to the reference genome. here we provide some examples of how typical MAPQ histograms for Bowtie2 and BWA alignments can look like:
+Note that MAPQ scores are computed slightly differently for Bowtie and BWA, so they are not directly comparable, however, for both MAPQ /content/drive/MyDrive 10-30, as in the histograms below, indicates good affinity of the DNA reads to the reference genome. here we provide some examples of how typical MAPQ histograms for Bowtie2 and BWA alignments can look like:
 
 ![](images/mapq.png)
 
@@ -609,7 +609,7 @@ git clone https://github.com/pontussk/PMDtools
 conda deactivate
 conda activate py27
 
-samtools view -h Y.pestis_sample10.bam | python2 ~/AncientEnvironmentalMetagenomics/PMDtools/pmdtools.0.60.py \
+samtools view -h Y.pestis_sample10.bam | python2 /content/drive/MyDrive/AncientEnvironmentalMetagenomics/PMDtools/pmdtools.0.60.py \
  --printDS > PMDscores.txt
 ```
 
@@ -684,18 +684,18 @@ rownames(df)<-df$Row.names; df$Row.names <- NULL; df[is.na(df)] <- 0
 true_sample <- subset(df,select=colnames(df)[!grepl("control",colnames(df))])
 negative_control <- subset(df,select=colnames(df)[grepl("control",colnames(df))])
 
-plot(log10(rowMeans(true_sample)+1) ~ log10(rowMeans(negative_control)+1),
+plot(log10(rowMeans(true_sample)+1) /content/drive/MyDrive log10(rowMeans(negative_control)+1),
 xlab = "Log10 ( Negative controls )", ylab = "Log10 ( True samples )",
 main = "Organism abundance in true samples vs. negative controls",
 pch = 19, col = "blue")
 
 points(log10(rowMeans(true_sample)+1)[(log10(rowMeans(true_sample)+1) > 1) & 
-(log10(rowMeans(negative_control)+1)>1)] ~ 
+(log10(rowMeans(negative_control)+1)>1)] /content/drive/MyDrive 
 log10(rowMeans(negative_control)+1)[(log10(rowMeans(true_sample)+1) > 1) & 
 (log10(rowMeans(negative_control)+1)>1)], pch = 19, col = "red")
 
 text(log10(rowMeans(true_sample)+1)[(log10(rowMeans(true_sample)+1) > 1) & 
-(log10(rowMeans(negative_control)+1) > 1)] ~ 
+(log10(rowMeans(negative_control)+1) > 1)] /content/drive/MyDrive 
 log10(rowMeans(negative_control)+1)[(log10(rowMeans(true_sample)+1) > 1) & 
 (log10(rowMeans(negative_control)+1)  >1)],
 labels = rownames(true_sample)[(log10(rowMeans(true_sample)+1) > 1) & 
@@ -855,7 +855,7 @@ tar -xf decOM_sources.tar.gz
 
 # Run decOM predictions
 decOM -p_sources decOM_sources/ -p_sinks FASTQ_NAMES_LIST.txt \
--p_keys ~/AncientEnvironmentalMetagenomics/03_TRIMMED -mem 15GB -t 4
+-p_keys /content/drive/MyDrive/AncientEnvironmentalMetagenomics/03_TRIMMED -mem 15GB -t 4
 ```
 
 In the command line above, he *-p_sinks* parameter provides a list of sink samples, for example *SRR13355807*.
@@ -1026,7 +1026,7 @@ For demonstration purposes we will use 10 simulated with [gargammel](https://aca
 
 ```bash
 cd aMeta
-cp -r ~/Share/data .
+cp -r /content/drive/MyDrive/Share/data .
 
 # In case you want to download the data, they are available here:
 #wget https://figshare.scilifelab.se/ndownloader/articles/21261405/versions/1 \
@@ -1037,7 +1037,7 @@ To run aMeta, we willl need a small KrakenUniq database. Here we download a pre-
 
 ```bash
 cd aMeta/resources
-cp -r ~/Share/Databases/KrakenUniq_DB .
+cp -r /content/drive/MyDrive/Share/Databases/KrakenUniq_DB .
 
 # In case you want to download the database, it is available here:
 #wget https://figshare.scilifelab.se/ndownloader/articles/21299541/versions/1 \
@@ -1048,7 +1048,7 @@ We will also need a Bowtie2 index corresponding to the KrakenUniq reference data
 
 ```bash
 cd aMeta/resources
-cp -r ~/Share/Databases/Bowtie2_index .
+cp -r /content/drive/MyDrive/Share/Databases/Bowtie2_index .
 
 # In case you want to download the Bowtie2 index, it is available here:
 #wget https://figshare.scilifelab.se/ndownloader/articles/21185887/versions/1 \
@@ -1061,12 +1061,12 @@ The last thing we need to download are a few helping files with useful NCBI taxo
 cd aMeta/resources
 #wget https://figshare.scilifelab.se/ndownloader/files/38201982 && \
 #mv 38201982 seqid2taxid.map.orig
-cp ~/Share/seqid2taxid.map.orig .
+cp /content/drive/MyDrive/Share/seqid2taxid.map.orig .
 #wget https://figshare.scilifelab.se/ndownloader/files/38201937 && \
 #mv 38201937 nucl_gb.accession2taxid
-cp ~/Share/nucl_gb.accession2taxid .
-cp -r ~/Share/Databases/Bowtie2_index .
-cp ~/Share/library.fna .
+cp /content/drive/MyDrive/Share/nucl_gb.accession2taxid .
+cp -r /content/drive/MyDrive/Share/Databases/Bowtie2_index .
+cp /content/drive/MyDrive/Share/library.fna .
 #wget https://figshare.scilifelab.se/ndownloader/files/37395181 && \
 #mv 37395181 library.fna.gz && gunzip library.fna.gz
 ```
@@ -1181,7 +1181,7 @@ __What options do we need?__
 We have only given the output directory in the script below; modify it as necessary and run `megahit`:
 
 ```bash 
-cd ~/AncientEnvironmentalMetagenomics
+cd /content/drive/MyDrive/AncientEnvironmentalMetagenomics
 
 conda activate AncientEnvironmentalMetagenomics
 
@@ -1204,9 +1204,9 @@ conda activate AncientEnvironmentalMetagenomics
 
 # if you need to install k8 please run
 # wget -O- https://github.com/attractivechaos/k8/releases/download/v1.2/k8-1.2.tar.bz2 | tar -jxf -
-# however, k8 is already installed for you in ~/Share/k8-1.2/ 
+# however, k8 is already installed for you in /content/drive/MyDrive/Share/k8-1.2/ 
 
-~/Share/k8-1.2/./k8-x86_64-Linux ~/Share/calN50.js 08_ASSEMBLY/final.contigs.fa > 09_ASSEMBLY_QC/assemstats.txt
+/content/drive/MyDrive/Share/k8-1.2/./k8-x86_64-Linux /content/drive/MyDrive/Share/calN50.js 08_ASSEMBLY/final.contigs.fa > 09_ASSEMBLY_QC/assemstats.txt
 ```
 
 N50 has a complex meaning. It is some sort of "average" (or representative) contig length but not exactly.
@@ -1260,7 +1260,7 @@ Now, we will figure out what organisms with available taxonomic annotation corre
 ```bash
 conda activate AncientEnvironmentalMetagenomics
 
-kraken2 --db ~/Share/Databases/minikraken2_v2_8GB_201904_UPDATE --threads 4 \
+kraken2 --db /content/drive/MyDrive/Share/Databases/minikraken2_v2_8GB_201904_UPDATE --threads 4 \
 --output 09_ASSEMBLY_QC/sequences.kraken_contigs --use-names \
 --report 09_ASSEMBLY_QC/kraken.output_contigs 06_ASSEMBLY/final.contigs.fa
 ```
