@@ -312,7 +312,7 @@ In Pavian you can upload your KrakenUniq report files ending by *krakenuniq.outp
 While KrakenUniq delivers information about breadth of coverage by default, one has to use a special flag *--report-minimizer-data* when running Kraken2 in order to get the breadth of coverage proxy which is called the **number of distrinct minimizers** for the case of Kraken2. Below, we provide an example Kraken2 command line containing the distinct minimizer flag.
 
 
-### Bonus: Kraken2
+### Kraken2
 
 And now let's run `Kraken2`. Kraken2 is a taxonomic sequence classifier that assigns taxonomic labels to DNA sequences. Kraken2 examines the k-mers within a query sequence and uses the information within those k-mers to query a database. 
 That database maps k-mers to the lowest common ancestor (LCA) of all genomes known to contain a given k-mer.
@@ -337,7 +337,7 @@ done
 Then the filtering of Kraken2 output with respect to breadth and depth of coverage can be done by analogy with filtering KrakenUniq output table. In case of *de-novo* assembly, the original DNA reads are typically alligned back to the assembled contigs, and the evennes / breadth of coverage can be computed from these alignments.
 
 
-### Bonus: sourmash
+### Sourmash
 
 There are many different appraoches for taxonomic profiling of metagenomes, each of them with their own up- and downsides. Let's now try a `sourmash`. Sourmash is k-mer-based, similar to Kraken2, Bracken, and Centrifuge, but uses k-mers from across the entire dataset, rather than individual reads, to find best-match genomes. In this way, it is able to leverage longer-range information present in a dataset, though not across reads themselves.
 
