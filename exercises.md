@@ -343,8 +343,8 @@ There are many different appraoches for taxonomic profiling of metagenomes, each
 
 ```bash
 # You will have to download the database:
-# wget https://farm.cse.ucdavis.edu//content/drive/MyDrivectbrown/sourmash-db/gtdb-rs207/gtdb-rs207.genomic-reps.dna.k31.zip
-# wget https://farm.cse.ucdavis.edu//content/drive/MyDrivectbrown/sourmash-db/gtdb-rs207/gtdb-rs207.taxonomy.with-strain.csv.gz
+# wget https://farm.cse.ucdavis.edu/~ctbrown/sourmash-db/gtdb-rs207/gtdb-rs207.genomic-reps.dna.k31.zip
+# wget https://farm.cse.ucdavis.edu/~ctbrown/sourmash-db/gtdb-rs207/gtdb-rs207.taxonomy.with-strain.csv.gz
 
 conda activate AncientEnvironmentalMetagenomics
 
@@ -645,7 +645,7 @@ pyDamage can be run on a sorted BAM-alignments of the microbial reads to the **d
 pydamage analyze -w 30 -p 14 filtered.sorted.bam
 ```
 
-# Microbiome contamination correction
+## Microbiome contamination correction
 
 Modern contamination can severely bias ancient metagenomic analysis. Also, ancient contamination, i.e. entered *post-mortem*, can potentially lead to false biological interpretations. Therefore, a lot of efforts in the ancient metagenomics field are directed on establishing methodology for identification of contaminants. Among them, the use of negative (blank) control samples is perhaps the most reliable and straighforward method. Additionally, one often performs microbial source tracking for predicting environment (including contamination environment) of origin for ancient metagenomic samples.
 
