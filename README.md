@@ -71,7 +71,7 @@ By completing this course, you will:
 | 16.00 - 17.30  | Practical: genomic hit confirmation by evenness of coverage and damage pattern             | [Lab](exercises.md#genomic-hit-confirmation)                                                                                                 |
 | 17.30 - 18.30  | Break                                                                                      |                                                                                                                 |
 | 18.30 - 19.30  | Decontamination analysis of metegenomic data and eukaryotic reference genomes              | [Slides](https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/slides/Lecture_Decontamination.pdf)                                                                                  |
-| 19.30 - 21.00  | Practical: microbial contamination correction and source tracking                          | [Lab](exercises.md#microbiome-contamination-correction)                                                                                                   |
+| 19.30 - 21.00  | Practical: microbial contamination correction and source tracking                          | [Lab](https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/exercises.md#microbiome-contamination-correction)                                                                                     |
 
 
 
