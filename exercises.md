@@ -12,7 +12,8 @@
    3. [Bonus: sourmash](#bonus-sourmash)
 5. [Authentication analysis](#authentication-analysis)
    1. [Genomic hit confirmation](#genomic-hit-confirmation)
-   2. [Ancient status](#ancient-specific-validation-criteria)
+   2. [Modern validation criteria](#modern-validation-criteria)
+   3. [Ancient Specific Validation Criteria](#ancient-specific-validation-criteria)
 6. [Microbiome Contamination Correction](#microbiome-contamination-correction)
    1. [Decontamination](#decontamination)
    2. [Microbial source tracking](#microbial-source-tracking)
@@ -382,7 +383,7 @@ Now analyse the results from `sourmash` in `R` or other data analysis tool of yo
 
 
 
-## Authentication analysis
+# Authentication analysis
 
 In ancient metagenomics we typically try to answer two questions: "Who is there?" and "How ancient?", meaning we would like to detect an organism and investigate whether this organism is ancient. There are three typical ways to identify the presence of an organism in a metagenomic sample:
 
