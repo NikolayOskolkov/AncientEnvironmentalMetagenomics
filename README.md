@@ -59,7 +59,7 @@ By completing this course, you will:
 | 16.30 - 17.30  | Practical: human host removal with Bowtie2 alignment                                       | [Lab](https://html-preview.github.io/?url=https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/practicals/Day1/Day1_QC.html)                                                                       |
 | 17.30 - 18.30  | Break                                                                                      |
 | 18.30 - 20.00  | Taxonomic profiling and filtering criteria                                                 | [Slides](https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/slides/Lecture_TaxonomicProfiling.pdf)                                                                               |
-| 20.00 - 21.00  | Practical: taxonomic profiling in microbial and environmental ancient metagenomics         | [Lab](exercises.md#read-based-taxonomic-profiling)                                                                                                    |
+| 20.00 - 21.00  | Practical: taxonomic profiling in microbial and environmental ancient metagenomics         | [Lab](https://html-preview.github.io/?url=https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/practicals/Day1/Day2_TaxonomicProfiling.html)                                                       |
 
 
 
