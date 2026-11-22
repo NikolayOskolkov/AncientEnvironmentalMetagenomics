@@ -13,9 +13,10 @@
 5. [Authentication analysis](#authentication-analysis)
    1. [Genomic hit confirmation](#genomic-hit-confirmation)
    2. [Ancient status](#ancient-specific-validation-criteria)
-6. [Decontamination analysis](#microbiome-contamination-correction)
-   1. [Microbial source tracking](#microbial-source-tracking)
-   2. [Microbial contamination in eukaryotic references](#microbial-contamination-in-eukaryotic-references)
+6. [Microbiome Contamination Correction](#microbiome-contamination-correction)
+   1. [Decontamination](#decontamination)
+   2. [Microbial source tracking](#microbial-source-tracking)
+   3. [Microbial contamination in eukaryotic references](#microbial-contamination-in-eukaryotic-references)
 7. [aMeta ancient metagenomic workflow](ameta-introduction-and-installation)
 8. [Metagenome assembly](#metagenome-assembly)
    1. [Assembly QC](#assembly-qc)
@@ -645,7 +646,7 @@ pyDamage can be run on a sorted BAM-alignments of the microbial reads to the **d
 pydamage analyze -w 30 -p 14 filtered.sorted.bam
 ```
 
-## Microbiome contamination correction
+# Microbiome contamination correction
 
 Modern contamination can severely bias ancient metagenomic analysis. Also, ancient contamination, i.e. entered *post-mortem*, can potentially lead to false biological interpretations. Therefore, a lot of efforts in the ancient metagenomics field are directed on establishing methodology for identification of contaminants. Among them, the use of negative (blank) control samples is perhaps the most reliable and straighforward method. Additionally, one often performs microbial source tracking for predicting environment (including contamination environment) of origin for ancient metagenomic samples.
 
