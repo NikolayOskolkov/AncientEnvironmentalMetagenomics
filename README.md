@@ -85,7 +85,7 @@ By completing this course, you will:
 | 17.30 - 18.30  | Break                                                                                      |                                                                                                                 |
 | 18.30 - 19.30  | Decontamination analysis of metegenomic data and eukaryotic reference genomes              | [Slides](https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/slides/Lecture_Decontamination.pdf)                                                                                  |
 | 18.30 - 19.30  | Misidentification in ancient environmental and sedimentary DNA research                    | [Slides](https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/slides/sedaDNA_Wang_Arctic_Biota.pdf)                                                                                |
-| 19.30 - 21.00  | Practical: correcting for microbial contamination in eukaryotic reference genomes          | [Lab](https://html-preview.github.io/?url=https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/practicals/Day4/Day4_GENEX.html)                                                                    |
+| 19.30 - 21.00  | Practical: correcting for microbial contamination in eukaryotic reference genomes          | [Lab](https://html-preview.github.io/?url=https://github.com/NikolayOskolkov/AncientEnvironmentalMetagenomics/blob/main/practicals/Day4/Day4_GENEX_shortcut.html)                                                           |
 
 
 
